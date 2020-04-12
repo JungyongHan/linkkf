@@ -59,6 +59,7 @@ class LogicLinkkf(object):
             url = '%s/%s' % (ModelSetting.get('linkkf_url'), episode_id)
             logger.debug("acess site" + str(url))
             data = LogicLinkkf.get_html(url)
+            logger.debug(data)
             tree = html.fromstring(data)
             url2s = [tag.attrib['value']for tag in tree.xpath('//*[@id="body"]/div/div/span/center/select/option')]
             logger.debug("\n" + str(url2s))
