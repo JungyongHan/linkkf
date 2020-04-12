@@ -58,11 +58,9 @@ class LogicLinkkf(object):
         try:
             url = '%s/%s' % (ModelSetting.get('linkkf_url'), episode_id)
             data = LogicLinkkf.get_html(url)
-            logger.debug("1\n" + data)
             tree = html.fromstring(data)
-            logger.debug("2\n" +tree)
             url2s = [tag.attrib['value']for tag in tree.xpath('//*[@id="body"]/div/div/span/center/select/option')]
-            logger.debug("3\n" +url2s)
+            logger.debug("\n" +url2s)
             url2s = filter(lambda url:
                     ('kfani' in url) |
                     ('linkkf' in url) | 
