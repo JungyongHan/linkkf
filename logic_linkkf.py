@@ -113,7 +113,7 @@ class LogicLinkkf(object):
         try:
             if LogicLinkkf.current_data is not None and LogicLinkkf.current_data['code'] == code and LogicLinkkf.current_data['ret']:
                 return LogicLinkkf.current_data
-            url = '%s/%s' % (ModelSetting.get('linkkf_url'), code)
+            url = '%s%s' % (ModelSetting.get('linkkf_url'), code)
             data = LogicLinkkf.get_html(url)
             tree = html.fromstring(data)
 
