@@ -33,7 +33,8 @@ class LogicLinkkf(object):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
         'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-        'Accept-Language' : 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+        'Accept-Language' : 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+        'referer' : 'https://panogas.com/'
     }
 
     session = None
@@ -60,7 +61,6 @@ class LogicLinkkf(object):
             data = LogicLinkkf.get_html(url)
             tree = html.fromstring(data)
             url2s = [tag.attrib['value']for tag in tree.xpath('//*[@id="body"]/div/div/span/center/select/option')]
-            
             logger.debug("\n" + str(url2s))
             
             url2s = filter(lambda url:
