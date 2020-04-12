@@ -34,11 +34,10 @@ class LogicLinkkf(object):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
         'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         'Accept-Language' : 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
-        'referer' : 'panogas.com'
     }
 
     session = None
-    referer = None
+    referer = 'panogas.com'
     current_data = None
 
     @staticmethod
@@ -113,7 +112,7 @@ class LogicLinkkf(object):
         try:
             if LogicLinkkf.current_data is not None and LogicLinkkf.current_data['code'] == code and LogicLinkkf.current_data['ret']:
                 return LogicLinkkf.current_data
-            url = '%s%s' % (ModelSetting.get('linkkf_url'), code)
+            url = '%s/%s' % (ModelSetting.get('linkkf_url'), code)
             data = LogicLinkkf.get_html(url)
             tree = html.fromstring(data)
 
